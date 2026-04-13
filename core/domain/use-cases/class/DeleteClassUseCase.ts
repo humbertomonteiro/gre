@@ -1,8 +1,8 @@
 import { Result, AppError } from "../../../errors";
-import { ClassRepository } from "../../../types/entities";
+import { FirebaseClassRepository } from "../../../infra/firebase/repositories/FirebaseClassRepository";
 
 export class DeleteClassUseCase {
-  constructor(private readonly classRepository: ClassRepository) {}
+  constructor(private readonly classRepository: FirebaseClassRepository) {}
 
   async execute(id: string): Promise<Result<void>> {
     try {
