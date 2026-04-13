@@ -53,10 +53,30 @@ function StatCard({
   href?: string;
 }) {
   const palette = {
-    blue:  { bg: "bg-blue-50",  ring: "ring-blue-100",  icon: "bg-blue-600",  text: "text-blue-700" },
-    green: { bg: "bg-green-50", ring: "ring-green-100", icon: "bg-green-600", text: "text-green-700" },
-    amber: { bg: "bg-amber-50", ring: "ring-amber-100", icon: "bg-amber-500", text: "text-amber-700" },
-    rose:  { bg: "bg-rose-50",  ring: "ring-rose-100",  icon: "bg-rose-600",  text: "text-rose-700" },
+    blue: {
+      bg: "bg-blue-50",
+      ring: "ring-blue-100",
+      icon: "bg-blue-600",
+      text: "text-blue-700",
+    },
+    green: {
+      bg: "bg-green-50",
+      ring: "ring-green-100",
+      icon: "bg-green-600",
+      text: "text-green-700",
+    },
+    amber: {
+      bg: "bg-amber-50",
+      ring: "ring-amber-100",
+      icon: "bg-amber-500",
+      text: "text-amber-700",
+    },
+    rose: {
+      bg: "bg-rose-50",
+      ring: "ring-rose-100",
+      icon: "bg-rose-600",
+      text: "text-rose-700",
+    },
   }[color];
 
   const inner = (
@@ -70,13 +90,17 @@ function StatCard({
           {icon}
         </div>
         {href && (
-          <ArrowRight className={`w-4 h-4 ${palette.text} opacity-40 group-hover:opacity-100 transition-opacity`} />
+          <ArrowRight
+            className={`w-4 h-4 ${palette.text} opacity-40 group-hover:opacity-100 transition-opacity`}
+          />
         )}
       </div>
       <div>
         <p className="text-sm font-medium text-slate-500 mb-1">{label}</p>
         <p className="text-2xl font-bold text-slate-800">{value}</p>
-        {sub && <p className={`text-xs font-medium mt-1 ${palette.text}`}>{sub}</p>}
+        {sub && (
+          <p className={`text-xs font-medium mt-1 ${palette.text}`}>{sub}</p>
+        )}
       </div>
     </div>
   );
@@ -161,7 +185,13 @@ export default function DashboardPage() {
           icon={<Users className="w-5 h-5" />}
           label="Total de Alunos"
           value={String(students.length)}
-          sub={students.length === 0 ? "Nenhum cadastrado" : `${students.length} ${students.length === 1 ? "aluno" : "alunos"} ativos`}
+          sub={
+            students.length === 0
+              ? "Nenhum cadastrado"
+              : `${students.length} ${
+                  students.length === 1 ? "aluno" : "alunos"
+                } ativos`
+          }
           color="blue"
           href="/dashboard/student"
         />
@@ -169,7 +199,11 @@ export default function DashboardPage() {
           icon={<BookOpen className="w-5 h-5" />}
           label="Turmas"
           value={String(classes.length)}
-          sub={classes.length === 0 ? "Nenhuma criada" : `${classes.length} ${classes.length === 1 ? "turma" : "turmas"}`}
+          sub={
+            classes.length === 0
+              ? "Nenhuma criada"
+              : `${classes.length} ${classes.length === 1 ? "turma" : "turmas"}`
+          }
           color="green"
           href="/dashboard/classes"
         />
@@ -204,14 +238,21 @@ export default function DashboardPage() {
               </p>
             </div>
             <span className="text-sm font-bold text-slate-700">
-              {Math.min(Math.round((recebidoMes / mensalidadeIdeal) * 100), 100)}%
+              {Math.min(
+                Math.round((recebidoMes / mensalidadeIdeal) * 100),
+                100
+              )}
+              %
             </span>
           </div>
           <div className="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
             <div
               className="h-full bg-gradient-to-r from-blue-500 to-green-500 rounded-full transition-all duration-700"
               style={{
-                width: `${Math.min((recebidoMes / mensalidadeIdeal) * 100, 100)}%`,
+                width: `${Math.min(
+                  (recebidoMes / mensalidadeIdeal) * 100,
+                  100
+                )}%`,
               }}
             />
           </div>
@@ -332,7 +373,9 @@ export default function DashboardPage() {
                         }`}
                       >
                         <Cake
-                          className={`w-4 h-4 ${isToday ? "text-white" : "text-pink-500"}`}
+                          className={`w-4 h-4 ${
+                            isToday ? "text-white" : "text-pink-500"
+                          }`}
                         />
                       </div>
                       <div>
@@ -489,36 +532,38 @@ export default function DashboardPage() {
       )}
 
       {/* ── Empty state (sem dados) ── */}
-      {students.length === 0 && classes.length === 0 && transactions.length === 0 && (
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 p-8 text-center">
-          <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <GraduationCap className="w-7 h-7 text-blue-600" />
+      {students.length === 0 &&
+        classes.length === 0 &&
+        transactions.length === 0 && (
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 p-8 text-center">
+            <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <GraduationCap className="w-7 h-7 text-blue-600" />
+            </div>
+            <h3 className="text-base font-semibold text-slate-800 mb-1">
+              Bem-vindo ao Seu GRE!
+            </h3>
+            <p className="text-sm text-slate-500 mb-6 max-w-sm mx-auto">
+              Comece cadastrando sua primeira turma e seus alunos para ver o
+              dashboard tomar vida.
+            </p>
+            <div className="flex gap-3 justify-center flex-wrap">
+              <Link
+                href="/dashboard/classes/new-class"
+                className="flex items-center gap-2 px-4 py-2.5 bg-white border border-slate-200 text-slate-700 rounded-xl hover:bg-slate-50 text-sm font-medium"
+              >
+                <BookOpen className="w-4 h-4" />
+                Criar primeira turma
+              </Link>
+              <Link
+                href="/dashboard/student/new-student"
+                className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 text-sm font-medium"
+              >
+                <Users className="w-4 h-4" />
+                Cadastrar primeiro aluno
+              </Link>
+            </div>
           </div>
-          <h3 className="text-base font-semibold text-slate-800 mb-1">
-            Bem-vindo ao Formando Futuros!
-          </h3>
-          <p className="text-sm text-slate-500 mb-6 max-w-sm mx-auto">
-            Comece cadastrando sua primeira turma e seus alunos para ver o
-            dashboard tomar vida.
-          </p>
-          <div className="flex gap-3 justify-center flex-wrap">
-            <Link
-              href="/dashboard/classes/new-class"
-              className="flex items-center gap-2 px-4 py-2.5 bg-white border border-slate-200 text-slate-700 rounded-xl hover:bg-slate-50 text-sm font-medium"
-            >
-              <BookOpen className="w-4 h-4" />
-              Criar primeira turma
-            </Link>
-            <Link
-              href="/dashboard/student/new-student"
-              className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 text-sm font-medium"
-            >
-              <Users className="w-4 h-4" />
-              Cadastrar primeiro aluno
-            </Link>
-          </div>
-        </div>
-      )}
+        )}
     </div>
   );
 }

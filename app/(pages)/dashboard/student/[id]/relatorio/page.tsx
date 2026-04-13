@@ -96,9 +96,7 @@ export default function RelatorioPage() {
             <h1 className="text-2xl font-bold text-slate-800 uppercase tracking-wide">
               Relatório do Aluno
             </h1>
-            <p className="text-slate-500 text-sm mt-1">
-              Gerado em {today}
-            </p>
+            <p className="text-slate-500 text-sm mt-1">Gerado em {today}</p>
           </div>
 
           {/* Dados do aluno */}
@@ -132,7 +130,9 @@ export default function RelatorioPage() {
               />
               <DataRow
                 label="Tempo de atendimento"
-                value={`${mesesAtendimento} ${mesesAtendimento === 1 ? "mês" : "meses"}`}
+                value={`${mesesAtendimento} ${
+                  mesesAtendimento === 1 ? "mês" : "meses"
+                }`}
               />
               <DataRow
                 label="Mensalidade"
@@ -226,7 +226,7 @@ export default function RelatorioPage() {
           {/* Rodapé */}
           <div className="border-t border-slate-200 pt-6 text-center">
             <p className="text-xs text-slate-400">
-              Documento gerado em {today} — GRE Formando Futuros
+              Documento gerado em {today} — Seu GRE
             </p>
           </div>
         </div>

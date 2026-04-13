@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GRE Formando Futuros",
+  title: "Seu GRE",
   description: "Gerenciador de Reforço Escolar - Simples e Seguro",
 };
 

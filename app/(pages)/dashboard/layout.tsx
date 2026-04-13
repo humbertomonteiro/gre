@@ -23,10 +23,15 @@ import { useMonthlyPayment } from "@/app/contexts/MonthlyPaymentContext";
 // ─── navegação ────────────────────────────────────────────────────────────────
 
 const navigation = [
-  { name: "Visão Geral", href: "/dashboard", icon: LayoutDashboard, exact: true },
-  { name: "Alunos",      href: "/dashboard/student", icon: Users,          exact: false },
-  { name: "Turmas",      href: "/dashboard/classes", icon: BookOpen,       exact: false },
-  { name: "Financeiro",  href: "/dashboard/finans",  icon: Wallet,         exact: false },
+  {
+    name: "Visão Geral",
+    href: "/dashboard",
+    icon: LayoutDashboard,
+    exact: true,
+  },
+  { name: "Alunos", href: "/dashboard/student", icon: Users, exact: false },
+  { name: "Turmas", href: "/dashboard/classes", icon: BookOpen, exact: false },
+  { name: "Financeiro", href: "/dashboard/finans", icon: Wallet, exact: false },
 ];
 
 function isActive(pathname: string, href: string, exact: boolean) {
@@ -218,7 +223,12 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   };
 
   const initials = user?.name
-    ? user.name.split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase()
+    ? user.name
+        .split(" ")
+        .slice(0, 2)
+        .map((n) => n[0])
+        .join("")
+        .toUpperCase()
     : "?";
 
   const currentPage =
@@ -231,7 +241,9 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
         <span className="text-xs font-bold text-white">{initials}</span>
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-semibold text-slate-800 truncate">{user?.name}</p>
+        <p className="text-sm font-semibold text-slate-800 truncate">
+          {user?.name}
+        </p>
         <p className="text-xs text-slate-400 truncate">{user?.email}</p>
       </div>
       <button
@@ -253,8 +265,10 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
             <GraduationCap className="w-4 h-4 text-white" />
           </div>
           <div>
-            <p className="text-sm font-bold text-slate-800 leading-none">Formando</p>
-            <p className="text-xs text-blue-600 font-semibold leading-none mt-0.5">Futuros</p>
+            <p className="text-sm font-bold text-slate-800 leading-none">Seu</p>
+            <p className="text-xs text-blue-600 font-semibold leading-none mt-0.5">
+              GRE
+            </p>
           </div>
         </div>
 
@@ -286,11 +300,18 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                   <GraduationCap className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-slate-800 leading-none">Formando</p>
-                  <p className="text-xs text-blue-600 font-semibold leading-none mt-0.5">Futuros</p>
+                  <p className="text-sm font-bold text-slate-800 leading-none">
+                    Seu
+                  </p>
+                  <p className="text-xs text-blue-600 font-semibold leading-none mt-0.5">
+                    GRE
+                  </p>
                 </div>
               </div>
-              <button onClick={() => setSidebarOpen(false)} className="p-1.5 rounded-lg hover:bg-slate-100">
+              <button
+                onClick={() => setSidebarOpen(false)}
+                className="p-1.5 rounded-lg hover:bg-slate-100"
+              >
                 <X className="w-5 h-5 text-slate-600" />
               </button>
             </div>
@@ -325,7 +346,9 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
               <Menu className="w-5 h-5 text-slate-600" />
             </button>
             <div>
-              <h1 className="text-base font-semibold text-slate-800">{currentPage}</h1>
+              <h1 className="text-base font-semibold text-slate-800">
+                {currentPage}
+              </h1>
               <p className="text-xs text-slate-400 hidden sm:block">
                 {new Date().toLocaleDateString("pt-BR", {
                   weekday: "long",
