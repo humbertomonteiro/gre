@@ -264,11 +264,11 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
           <div className="w-8 h-8 bg-blue-600 rounded-xl flex items-center justify-center shadow-sm">
             <GraduationCap className="w-4 h-4 text-white" />
           </div>
-          <div>
-            <p className="text-sm font-bold text-slate-800 leading-none">Seu</p>
-            <p className="text-xs text-blue-600 font-semibold leading-none mt-0.5">
+          <div className="flex gap-1 items-end justify-around text-black">
+            Seu
+            <div className="text-blue-600 font-bold leading-none text-2xl">
               GRE
-            </p>
+            </div>
           </div>
         </div>
 
@@ -299,13 +299,11 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                 <div className="w-8 h-8 bg-blue-600 rounded-xl flex items-center justify-center">
                   <GraduationCap className="w-4 h-4 text-white" />
                 </div>
-                <div>
-                  <p className="text-sm font-bold text-slate-800 leading-none">
-                    Seu
-                  </p>
-                  <p className="text-xs text-blue-600 font-semibold leading-none mt-0.5">
+                <div className="flex gap-1 items-end justify-around text-black">
+                  Seu
+                  <div className="text-blue-600 font-bold leading-none text-2xl">
                     GRE
-                  </p>
+                  </div>
                 </div>
               </div>
               <button
